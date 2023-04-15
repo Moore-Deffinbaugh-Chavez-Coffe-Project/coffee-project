@@ -10,8 +10,6 @@ function renderCoffee(coffee) {
 
     console.log(html);
     return html;
-
-
 }
 
 // provides the html for All coffee objects
@@ -62,3 +60,49 @@ var roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+
+
+
+
+
+
+// additional code
+// cascade
+var cascadeBtn = document.getElementById('cascade');
+cascadeBtn.addEventListener('click', cascadeCoffees);
+
+function cascadeCoffees() {
+    var htmlCoffees = document.querySelectorAll('#coffees>*');
+    console.log(htmlCoffees)
+
+    for(var i = 0; i < htmlCoffees.length; i++) {
+        assign(htmlCoffees, i);
+    }
+
+}
+
+function assign(list, iteration) {
+    setTimeout(function(){
+        list[iteration].style.color = 'blue';
+        list[iteration].style.transform = "translateX(-100%)";
+        list[iteration].style.transition = '4s';
+    }, 150 * iteration );
+}
+
+// gif
+var gifBtn = document.getElementById('gifBtn');
+gifBtn.addEventListener('click', showGif);
+
+function showGif() {
+    var gif = document.getElementById('gif');
+    gif.style.transition = 'opacity .1s, transform ease-in 1s';
+    gif.style.opacity = '1';
+    gif.style.transform = 'scale(400)';
+    setTimeout(function(){
+        gif.src = 'assets/coffee.gif';
+    },1000);
+
+}
+
+

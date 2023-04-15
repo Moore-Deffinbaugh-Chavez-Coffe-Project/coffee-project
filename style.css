@@ -7,3 +7,25 @@ td, th {
     border: 1px solid black;
     padding: 5px 10px;
 }
+
+/*addtional code*/
+#gif {
+    /*position: fixed;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*!* bring your own prefixes *!*/
+    /*transform: translate(-50%, -50%);*/
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    opacity: 0;
+    height: 1px;
+}
+
+/*body {*/
+/*    background-color: #d6c4af;*/
+/*}*/
+
