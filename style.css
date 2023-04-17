@@ -19,3 +19,117 @@ h1 {
     background-color: #99532D;
     color: #F4E2CA;
 }
+
+
+/*media queries to change the menu size as the screen size changes*/
+@media screen and (min-width: 576px){
+    #menu {
+        height: 252px;
+        background-image: url("assets/coffee-chalkboard.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #coffees {
+        column-count: 3;
+        padding-top: 65px;
+        padding-left: 0;
+        padding-right: 10px;
+        color: white;
+    }
+    #coffees>* {
+        padding-bottom: 10px;
+    }
+    #coffees h3 {
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+    #coffees p {
+        font-size: 8px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    #menu {
+        height: 340px;
+    }
+    #coffees {
+        column-count: 4;
+        padding-top: 80px;
+        padding-left: 5px;
+    }
+    #coffees>* {
+        padding-bottom: 6px;
+    }
+    #coffees h3 {
+        font-size: 16px;
+        font-weight: bold;
+
+    }
+    #coffees p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #menu {
+        height: 457px;
+    }
+    #coffees {
+        padding-top: 110px;
+        padding-left: 15px;
+    }
+    #coffees>* {
+        padding-bottom: 10px;
+    }
+    #coffees h3 {
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+    #coffees p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    #menu {
+        height: 545px;
+    }
+    #coffees {
+        padding-top: 140px;
+        padding-left: 25px;
+    }
+    #coffees>* {
+        padding-bottom: 10px;
+    }
+    #coffees h3 {
+        font-size: 28px;
+        font-weight: bold;
+
+    }
+    #coffees p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    #menu {
+        height: 633px;
+    }
+    #coffees {
+        padding-top: 160px;
+        padding-left: 25px;
+    }
+    #coffees>* {
+        padding-bottom: 20px;
+    }
+    #coffees h3 {
+        font-size: 32px;
+        font-weight: bold;
+
+    }
+    #coffees p {
+        font-size: 18px;
+    }
+}

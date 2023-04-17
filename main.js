@@ -4,8 +4,7 @@
 // template to build renderCoffees function
 function renderCoffee(coffee) {
     var html = '<div class=" row ms-2 coffee">';
-    html += '<div class="col col-2"><h3>' + coffee.name + coffee.id + '</h3></div>';
-    html += '<div class="col col-2"><p>' + coffee.roast + '</p></div>';
+    html += '<div class="col d-flex align-items-end my-md-2"><h3 class="mb-0 mx-1git br">' + coffee.name + coffee.id + '</h3><p class="mb-0 mx-1">' + coffee.roast + '</p></div>';
     html += '</div class="row">';
 
     return html;
