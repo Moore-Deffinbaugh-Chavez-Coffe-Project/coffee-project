@@ -1,7 +1,13 @@
 "use strict"
+
 //
 // var audio = new Audio("assets/file_example_MP3_1MG.mp3")
 // audio.addEventListener("canplaythrough", evt => {
+
+
+// var audio = new Audio("assets/dream-by-dreams-143531 (1).mp3")
+// audio.addEventListener("canplay", evt => {
+
 //     audio.play();
 // })
 
@@ -148,11 +154,11 @@ function addCoffees(e) {
     // e.preventDefault();
     secondArray.push(createCoffeeObject(coffeeName.value, createRoastSelection.value));
     localStorage.setItem('storedArry', JSON.stringify(secondArray));
-    // document.location.reload();
-    console.log('This is where we would add the gif');
-    var timeout = setTimeout(function() {
-        document.location.reload();
-    }, 5000)
+    document.location.reload();
+    // console.log('This is where we would add the gif');
+    // var timeout = setTimeout(function() {
+    //     document.location.reload();
+    // }, 5000)
 }
 
 
