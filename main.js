@@ -1,9 +1,9 @@
 "use strict"
-
-var audio = new Audio("assets/file_example_MP3_1MG.mp3")
-audio.addEventListener("canplay", evt => {
-    audio.play();
-})
+//
+// var audio = new Audio("assets/file_example_MP3_1MG.mp3")
+// audio.addEventListener("canplaythrough", evt => {
+//     audio.play();
+// })
 
 
 // provides html for INDIVIDUAL coffee objects.
