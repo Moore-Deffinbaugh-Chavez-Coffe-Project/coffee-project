@@ -1,3 +1,5 @@
+
+
 .navbar {
     background-color: #99532D;
     font-family: 'Dancing Script', cursive;
@@ -38,6 +40,13 @@ h1 {
     border-color: brown;
 }
 
+#order {
+    background-color: #99532D;
+    color: #F4E2CA;
+
+    border-color: brown;
+}
+
 #coffee-submit{
     background-color: #99532D;
     color: #F4E2CA;
@@ -52,6 +61,8 @@ h1 {
 
 body{
     background-color: #F4E8DA;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -78,4 +89,19 @@ body{
 
 #test-menu img {
     margin: 20px 0;
+}
+
+footer {
+    background-color: #99532D;
+    padding: 1em 0;
+
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    color: #F4E2CA;
 }
