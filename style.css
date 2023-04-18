@@ -1,23 +1,36 @@
+body {
+    background-color: #F4E8DA;
+    margin: 0;
+    padding: 0;
+}
 
-
-.navbar {
+#navbar {
     background-color: #99532D;
     font-family: 'Dancing Script', cursive;
+}
+
+#navbar img {
+    width: 60px;
+}
+
+.banner {
+    width: 100%;
 }
 
 #main-header {
     margin: 2em 0;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+#menu-logo {
+    width: 100px;
+    opacity: .8;
+    border-radius: 50%;
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+.add-coffee {
+    width: 100%;
 }
+
 h1 {
     display: flex;
     justify-content: center;
@@ -30,49 +43,28 @@ h1 {
     border-color: brown;
 }
 
-.form-control{
-    border-color: brown;
-}
-#submit{
-    background-color: #99532D;
-    color: #F4E2CA;
-
+.form-control {
     border-color: brown;
 }
 
-#order {
-    background-color: #99532D;
-    color: #F4E2CA;
-
-    border-color: brown;
-}
-
-#coffee-submit{
+#order, #coffee-submit, #clear, #submit {
     background-color: #99532D;
     color: #F4E2CA;
     border-color: brown;
 }
 
-#clear{
-    background-color: #99532D;
-    color: #F4E2CA;
-    border-color: brown;
-}
 
-body{
-    background-color: #F4E8DA;
-    margin: 0;
-    padding: 0;
-
-}
-
-#test-menu {
-    /*width: 500px;*/
-    /*height: 500px;*/
+#menu {
     background-image: url("assets/plain-chalkboard-bg.jpeg");
     background-size: cover;
     border: 15px solid #99532d;
     min-height: 700px;
+    padding: 15px;
+}
+
+#menu img {
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 #coffees {
@@ -82,18 +74,14 @@ body{
     opacity: .8;
     text-align: center;
 }
+
 .form-label {
     font-family: 'Dancing Script', cursive;
-}
-
-#test-menu img {
-    margin: 20px 0;
 }
 
 footer {
     background-color: #99532D;
     padding: 1em 0;
-
 }
 
 footer a {
@@ -103,4 +91,53 @@ footer a {
 
 footer a:hover {
     color: #F4E2CA;
+}
+
+/*GIF STUFF*/
+#gif-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border-radius: 25px;
+    z-index: 10;
+    background-color: transparent;
+    text-align: center;
+}
+
+#gif-popup.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: .8;
+    pointer-events: all;
+}
+
+#gif-popup img {
+    border-radius: 25px;
+    height: 400px;
+
+}
+
+#gif-popup h3 {
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 15px;
+    color: #552214;
+    font-family: 'Dancing Script', cursive;
+    background-color: #F4E8DA;
 }
