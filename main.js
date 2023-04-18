@@ -1,33 +1,14 @@
 "use strict"
 
 
-var audio = new Audio("assets/dream-by-dreams-143531 (1).mp3")
-audio.addEventListener("canplay", evt => {
-    audio.play();
-
-//
-// var audio = new Audio("assets/file_example_MP3_1MG.mp3")
-// audio.addEventListener("canplaythrough", evt => {
-
-
-// var audio = new Audio("assets/dream-by-dreams-143531 (1).mp3")
-// audio.addEventListener("canplay", evt => {
-
-//     audio.play();
-// })
-
-
-
 // provides html for INDIVIDUAL coffee objects.
 // template to build renderCoffees function
 function renderCoffee(coffee) {
     var html = '<div class=" row ms-2 mb-2 coffee">';
-    html += '<div class="col d-flex align-items-end"><h3 class="mb-0 mx-2">' + coffee.name + '</h3><p class=" mb-0">' + coffee.roast + '</p></div>';
+    html += '<div class="col d-flex align-items-end p-0"><h3 class="mb-0 mx-2">' + coffee.name + '</h3><p class=" mb-0">' + coffee.roast + '</p></div>';
     html += '</div>';
 
     return html;
-
-
 }
 
 // provides the html for All coffee objects
@@ -35,7 +16,7 @@ function renderCoffee(coffee) {
 // blocks for each coffee object and then combines them into one big html block
 function renderCoffees(coffees) {
     var html = '';
-    for(var i = coffees.length - 1; i >= 0; i--) {
+    for (var i = coffees.length - 1; i >= 0; i--) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -45,26 +26,19 @@ function renderCoffees(coffees) {
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
-    var selectedName = coffeeNameSearch.value;
     var filteredCoffees = [];
-    // if statement to check if all coffees are wanted or a specific roast
-    if(selectedRoast.toLowerCase() == "all") {
+    // if statement added to check if all coffees are wanted or a specific roast
+    // case-insensitive
+    if (selectedRoast.toLowerCase() == "all") {
         tbody.innerHTML = renderCoffees(combinedArray);
     } else {
-        combinedArray.forEach(function(coffee) {
+        combinedArray.forEach(function (coffee) {
             if (coffee.roast === selectedRoast.toLowerCase()) {
                 filteredCoffees.push(coffee);
             }
         });
         tbody.innerHTML = renderCoffees(filteredCoffees);
     }
-
-    combinedArray.forEach(function(coffee) {
-        var capital = coffee.roast.charAt(0).toUpperCase() + coffee.roast.slice(1);
-        if (coffee.name.toLowerCase().includes(selectedName.toLowerCase())) {
-            console.log('You ordered a ' + capital + " " + coffee.name);
-        }  });
-
 }
 
 //array of coffee objects
@@ -86,66 +60,43 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-// this line is injecting the javascript generated html into the div with the id of coffees
-var tbody = document.querySelector('#coffees');
-// grabbing the submit button for filtered coffee list
-var submitButton = document.querySelector('#submit');
-// grabbing the selection of light, med, or dark for filtered list
-var roastSelection = document.querySelector('#roast-selection');
 
-
-// search by typing coffee name
-var coffeeNameSearch = document.querySelector('#search-coffee-name');
-//adding event listener to refresh with every letter types
-coffeeNameSearch.addEventListener('keyup', function() {
-    updateCoffeesByName();
-})
+// functions added by us :)
 //function to update coffee list based on user typing
 function updateCoffeesByName(e) {
     var selectedName = coffeeNameSearch.value;
     var filteredCoffees = [];
-        combinedArray.forEach(function(coffee) {
-            if (coffee.name.toLowerCase().includes(selectedName.toLowerCase())) {
-                filteredCoffees.push(coffee);
-            }
-        });
-        tbody.innerHTML = renderCoffees(filteredCoffees);
-
+    combinedArray.forEach(function (coffee) {
+        if (coffee.name.toLowerCase().includes(selectedName.toLowerCase())) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-
-
-
-
-
-
-
-// local storage code
-// get name and roast of new coffee
-var createRoastSelection = document.querySelector('#create-roast-selection');
-var coffeeName = document.getElementById('coffeeName');
-// locate submit button for new coffee creation
-var creationSubmitButton = document.getElementById('coffee-submit');
-// grab already stored input if there is any
-var storedInput = JSON.parse(localStorage.getItem('storedArry'));
-// create a second array that is used to hold the user created coffees
-var secondArray = [];
-
-// grab button that clears all user created coffees
-var clearBtn = document.getElementById('clear');
-
-// this function clears the stored data (user made coffees)
-clearBtn.addEventListener('click', function() {
-    localStorage.clear();
-    document.location.reload();
-})
-
-// this checks if there is stored input (user created coffees), and if so, adds it to the second array
-if(storedInput) {
-    secondArray = storedInput;
+// function to place a coffee order
+function placeOrder(e) {
+    e.preventDefault()
+    var selectedName = coffeeNameSearch.value;
+    // loops through coffee list and checks if their order matches a coffee on the menu
+    combinedArray.forEach(function (coffee) {
+        if (coffee.name.toLowerCase() == (selectedName.toLowerCase())) {
+            // code to display pop up gif
+            var headerText = document.getElementById('popupText');
+            headerText.innerHTML = coffee.name + " coffee coming right up!";
+            audio.play();
+            popUp.classList.add('active');
+            overlay.classList.add('active');
+            var timeout = setTimeout(function () {
+                document.location.reload();
+            }, 7000)
+        }
+    });
 }
+
 
 // this function turns the user input into a coffee object with a unique ID
+// so that it can be added to the list of coffees
 function createCoffeeObject(inputName, inputRoast) {
     var newId = combinedArray.length + 1;
     return {
@@ -157,23 +108,83 @@ function createCoffeeObject(inputName, inputRoast) {
 
 // this function adds the new coffees to the second array and saves them to local storage
 function addCoffees(e) {
-    // e.preventDefault();
-    secondArray.push(createCoffeeObject(coffeeName.value, createRoastSelection.value));
-    localStorage.setItem('storedArry', JSON.stringify(secondArray));
-    document.location.reload();
-    // console.log('This is where we would add the gif');
-    // var timeout = setTimeout(function() {
-    //     document.location.reload();
-    // }, 5000)
+    if(coffeeName.value.length > 2) {
+        secondArray.push(createCoffeeObject(coffeeName.value, createRoastSelection.value));
+        localStorage.setItem('storedArry', JSON.stringify(secondArray));
+        // code to display popup gif
+        var headerText = document.getElementById('popupText');
+        headerText.innerHTML = coffeeName.value + " coffee added to the menu!";
+        audio.play();
+        popUp.classList.add('active');
+        overlay.classList.add('active');
+        var timeout = setTimeout(function () {
+
+            document.location.reload();
+        }, 7000)
+    }
 }
 
 
+// variables
+// this line is grabbing the html div responsible for displaying the coffees
+var tbody = document.querySelector('#coffees');
+// grabbing the submit button for filtered coffee list
+var submitButton = document.querySelector('#submit');
+// grabbing the selection of light, med, or dark for filtered list
+var roastSelection = document.querySelector('#roast-selection');
+// grabs the coffee name typed in the search bar
+var coffeeNameSearch = document.querySelector('#search-coffee-name');
+// creates the audio object
+var audio = new Audio("assets/file_example_MP3_1MG.mp3")
+// grabs popup and overlay for the gif popup
+var popUp = document.getElementById('gif-popup');
+var overlay = document.getElementById('overlay');
+// grabs the button responsible for placing an order
+var placeOrderButton = document.getElementById('order');
+// get name and roast of new coffee
+var createRoastSelection = document.querySelector('#create-roast-selection');
+var coffeeName = document.getElementById('coffeeName');
+// grab add a coffee button
+var creationSubmitButton = document.getElementById('coffee-submit');
+// create a second array that is used to hold the user created coffees
+var secondArray = [];
+// grab already stored input if there is any
+var storedInput = JSON.parse(localStorage.getItem('storedArry'));
+// this checks if there is stored input (user created coffees), and if so, adds it to the second array
+if (storedInput) {
+    secondArray = storedInput;
+}
+// grabs button that clears all user created coffees
+var clearBtn = document.getElementById('clear');
 // this creates a combined array of both the original coffees and user supplied coffees
 var combinedArray = coffees.concat(secondArray);
+
+
+// event listeners
+//event listener to refresh with every letter as the user types in the search bar
+coffeeNameSearch.addEventListener('keyup', function () {
+    updateCoffeesByName();
+})
+// event listener for order placing button
+placeOrderButton.addEventListener('click', placeOrder);
+
+
+// this event listener/function clears the stored data (user made coffees)
+clearBtn.addEventListener('click', function () {
+    localStorage.clear();
+    document.location.reload();
+})
 
 // this displays the combined arrays into the html div
 tbody.innerHTML = renderCoffees(combinedArray.reverse());
 
 // event listeners for the filter coffee button and the create coffee button
-creationSubmitButton.addEventListener('click', addCoffees)
+creationSubmitButton.addEventListener('click', addCoffees);
 submitButton.addEventListener('click', updateCoffees);
+
+
+
+
+
+
+
