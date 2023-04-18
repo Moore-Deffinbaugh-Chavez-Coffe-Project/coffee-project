@@ -1,4 +1,6 @@
-"use strict"
+(function() {
+
+    "use strict"
 
 
 // provides html for INDIVIDUAL coffee objects.
@@ -135,7 +137,7 @@ var roastSelection = document.querySelector('#roast-selection');
 // grabs the coffee name typed in the search bar
 var coffeeNameSearch = document.querySelector('#search-coffee-name');
 // creates the audio object
-var audio = new Audio("assets/file_example_MP3_1MG.mp3")
+var audio = new Audio("assets/dream-by-dreams-143531 (1).mp3")
 // grabs popup and overlay for the gif popup
 var popUp = document.getElementById('gif-popup');
 var overlay = document.getElementById('overlay');
@@ -181,6 +183,8 @@ tbody.innerHTML = renderCoffees(combinedArray.reverse());
 // event listeners for the filter coffee button and the create coffee button
 creationSubmitButton.addEventListener('click', addCoffees);
 submitButton.addEventListener('click', updateCoffees);
+
+})();
 
 
 
