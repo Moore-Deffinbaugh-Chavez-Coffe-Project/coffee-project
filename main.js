@@ -184,6 +184,24 @@ tbody.innerHTML = renderCoffees(combinedArray.reverse());
 creationSubmitButton.addEventListener('click', addCoffees);
 submitButton.addEventListener('click', updateCoffees);
 
+// easter egg
+    var mugOne = document.getElementById('mug-one');
+    var mugTwo = document.getElementById('mug-two');
+    var easterEgg = document.getElementById('easter-egg');
+
+    mugOne.addEventListener('click', function() {
+            mugOne.classList.remove('active-one');
+            mugOne.classList.add('inactive');
+            mugTwo.classList.add('active-two');
+    })
+
+    mugTwo.addEventListener('click', function() {
+        mugTwo.classList.remove('active-two');
+        mugTwo.classList.add('inactive');
+        easterEgg.classList.add('active-three');
+    })
+
+
 })();
 
 

@@ -141,3 +141,30 @@ footer a:hover {
     font-family: 'Dancing Script', cursive;
     background-color: #F4E8DA;
 }
+
+/*easter egg*/
+.inactive  {
+    display: none;
+}
+
+@media screen and (min-width:1352px) and (max-width: 1352px){
+    .active-one {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width:893px) and (max-width: 893px){
+    .active-two {
+        display: block;
+        margin: 0 auto;
+        color: #552214;
+    }
+}
+
+@media screen and (min-width:1108px) and (max-width: 1108px){
+    .active-three {
+        display: block;
+        margin: 0 auto;
+    }
+}
